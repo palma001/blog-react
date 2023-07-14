@@ -46,7 +46,7 @@ export default function Dashboard (props) {
 
   return (
     <>
-      <div id="detail">
+      <div id="detail" style={{ paddingBottom: '50px' }}>
         <Outlet />
       </div>
       <TopNav onNavOpen={() => setOpenNav(true)} />
