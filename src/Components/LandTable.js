@@ -23,12 +23,12 @@ export default function LandTable ({ data, headers }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((recorder, index) => (
+          {data.map((dt, index) => (
             <TableRow key={index} hover>
               {
                 headers.map(header => (
                   <TableCell key={header.value}>
-                    { recorder[header.value] || '-' }
+                    { dt[header.value] || '-' }
                   </TableCell>
                 ))
               }

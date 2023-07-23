@@ -21,6 +21,7 @@ export default function tabsData (headers, tabs, loadingData, tableData) {
       label: 'Recorder',
       value: 'recorder',
       menu: 'recorder',
+      principal: true,
       component: <TableComponent data={tableData}/>
     },
     {
@@ -51,6 +52,7 @@ export default function tabsData (headers, tabs, loadingData, tableData) {
       label: 'Tax Assessor',
       value: 'taxAssessor',
       menu: 'taxAssessor',
+      principal: true,
       component: <TableComponent data={tableData} />
     },
     {
@@ -72,9 +74,10 @@ export default function tabsData (headers, tabs, loadingData, tableData) {
       component: <TableComponent data={tableData} />
     },
     {
-      label: 'Owner Unmask',
-      value: 'ownerUnmask',
+      label: 'Usa Owner Unmask',
+      value: 'ownerUnmaskUsa',
       menu: 'ownerUnmask',
+      principal: true,
       component: <TableComponent data={tableData} />
     },
     {
@@ -90,7 +93,7 @@ export default function tabsData (headers, tabs, loadingData, tableData) {
       component: <TableComponent data={tableData} />
     },
     {
-      label: 'Usa Owner Unmask - Contract Information',
+      label: 'Usa Owner Unmask - Contact Information',
       value: 'ownerUnmaskContractInformation',
       menu: 'ownerUnmask',
       component: <TableComponent data={tableData} />
@@ -98,12 +101,6 @@ export default function tabsData (headers, tabs, loadingData, tableData) {
     {
       label: 'Usa Owner Unmask - Corporate Employee',
       value: 'ownerUnmaskCorporateEmployee',
-      menu: 'ownerUnmask',
-      component: <TableComponent data={tableData} />
-    },
-    {
-      label: 'Usa Owner Unmask',
-      value: 'ownerUnmaskUsa',
       menu: 'ownerUnmask',
       component: <TableComponent data={tableData} />
     },
@@ -171,6 +168,84 @@ export default function tabsData (headers, tabs, loadingData, tableData) {
       label: 'Recorder',
       value: 'recorderLookups',
       menu: 'lookups',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'USA Address',
+      value: 'usaAddress',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'USA Building',
+      value: 'usaBuilding',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'USA Lot',
+      value: 'usaLot',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'USA Unit',
+      value: 'usaUnit',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'USA Safegraph Places',
+      value: 'usaSafegraphPlaces',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'USA Avm',
+      value: 'usaAvm',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'Bls Employment',
+      value: 'blsEmployment',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'Census Permit Survey Pre',
+      value: 'censusPermitSurveyPre',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'Census Permit Survey Post',
+      value: 'censusPermitSurveyPost',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'Usa School',
+      value: 'usaSchool',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'Usa Tax Assessor History',
+      value: 'usaTaxAssessorHistory',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'Usa Demographics',
+      value: 'usaDemographics',
+      menu: 'usa',
+      component: <TableComponent data={tableData} />
+    },
+    {
+      label: 'Usa Rural-Urban Continuum Codes 2013',
+      value: 'usaRuralUrbanContinuumCodes2013',
+      menu: 'usa',
       component: <TableComponent data={tableData} />
     },
   ].filter((item) => item.menu === tabs)

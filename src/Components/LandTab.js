@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList'
+// import TabList from '@mui/lab/TabList'
 import Box from '@mui/material/Box';
 import TabPanel from '@mui/lab/TabPanel';
-import { Typography } from '@mui/material';
+import { Tabs, Typography } from '@mui/material';
 
 export default function LandTab ({ tabs, handleChange, value }) {
 
@@ -26,24 +26,31 @@ export default function LandTab ({ tabs, handleChange, value }) {
               {
                 tabs.length > 0 && (
                   <>
-                    <TabList onChange={handleChangeTab} aria-label="lab API tabs example">
+                    <Tabs
+                      variant="scrollable"
+                      scrollButtons="auto"
+                      aria-label="scrollable auto tabs example"
+                      onChange={handleChangeTab}
+                      value={value}
+                    >
                       {
                         tabs.map(tab => (
-                          <Tab label={tab.label} value={tab.value} key={tab.value}/>
+                          <Tab
+                            wrapped
+                            label={tab.label}
+                            value={tab.value}
+                            key={tab.value}
+                          />
                         ))
                       }
-                      {/* <Tab label="Recorder" value="recorder"/>
-                      <Tab label="Recorder Grantee" value="recorderGrantee" />
-                      <Tab label="Recorder Legal Description" value="recorderLegalDescription" />
-                      <Tab label="Recorder Mortgage" value="recorderMortgage" /> */}
-                    </TabList>
-                  {
-                    tabs.map(tab => (
-                      <TabPanel value={tab.value} key={tab.value}>
-                        { tab.component }
-                      </TabPanel>
-                    ))
-                  }
+                    </Tabs>
+                    {
+                      tabs.map(tab => (
+                        <TabPanel value={tab.value} key={tab.value}>
+                          { tab.component }
+                        </TabPanel>
+                      ))
+                    }
                   </>
                 )
               }

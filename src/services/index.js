@@ -1,5 +1,12 @@
 import api from './graphql-axios';
-import { schemaRecoder, schemaParcel } from './schemas';
+import {
+  schemaRecoder,
+  schemaParcel,
+  schemaTaxAssessor,
+  schemaGeography,
+  schemaOwnerUnmask,
+  usa
+} from './schemas';
 
 const getData = async (query) => {    
   try {
@@ -14,5 +21,9 @@ const getData = async (query) => {
 export {
   getData,
   schemaRecoder,
-  schemaParcel
+  schemaParcel,
+  schemaTaxAssessor,
+  schemaOwnerUnmask,
+  schemaGeography,
+  usa
 }
