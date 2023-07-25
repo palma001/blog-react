@@ -1,10 +1,9 @@
 import * as React from 'react';
-import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 // import TabList from '@mui/lab/TabList'
-import Box from '@mui/material/Box';
 import TabPanel from '@mui/lab/TabPanel';
-import { Tabs, Typography } from '@mui/material';
+import { Paper, Tabs, Typography, Box, Tab } from '@mui/material';
+
 
 export default function LandTab ({ tabs, handleChange, value }) {
 
@@ -40,14 +39,17 @@ export default function LandTab ({ tabs, handleChange, value }) {
                             label={tab.label}
                             value={tab.value}
                             key={tab.value}
+                            disabled={tab.missing}
                           />
                         ))
                       }
                     </Tabs>
                     {
                       tabs.map(tab => (
-                        <TabPanel value={tab.value} key={tab.value}>
-                          { tab.component }
+                        <TabPanel value={tab.value} key={tab.value} sx={{ padding: '30px', boxShadow: 'inset 0 0 7px rgba(0, 0, 0, 0.5)' }}>
+                          <Paper>
+                            { tab.component }
+                          </Paper>      
                         </TabPanel>
                       ))
                     }

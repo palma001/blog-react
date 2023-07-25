@@ -1,20 +1,8 @@
-import { Box, CircularProgress } from "@mui/material"
 import LandTable from "../../Components/LandTable"
+import { schemaRecoder } from "../../services"
 export default function tabsData (headers, tabs, loadingData, tableData) {
   const TableComponent = ({ data }) => {
-    return (
-      <>
-        {loadingData && (
-            <Box sx={{ display: 'flex', alignContent: 'center', width: '100%', alignItems: 'center' }}>
-              <CircularProgress />
-            </Box>
-          )
-        }
-        {!loadingData && (
-          <LandTable data={data} headers={headers}/>
-        )}
-      </>
-    )
+    return <LandTable data={data} headers={headers} loadingData={loadingData}/>
   }
   return [
     {
@@ -22,6 +10,8 @@ export default function tabsData (headers, tabs, loadingData, tableData) {
       value: 'recorder',
       menu: 'recorder',
       principal: true,
+      schema: (param) => schemaRecoder.recoder(param, 1000),
+      nameSchema: 'recoder',
       component: <TableComponent data={tableData}/>
     },
     {
