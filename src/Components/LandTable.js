@@ -26,20 +26,24 @@ export default function LandTable ({ data, headers, loadingData }) {
         <TableBody>
           {
             loadingData && (
-              <TableCell colSpan={2}>
-                <Box style={{ display: 'grid', placeItems: 'center' }}>
-                  <CircularProgress />
-                </Box>
-              </TableCell>
+              <TableRow>
+                <TableCell colSpan={2}>
+                  <Box style={{ display: 'grid', placeItems: 'center' }}>
+                    <CircularProgress />
+                  </Box>
+                </TableCell>
+              </TableRow>
             )
           }
           {
             !loadingData && data.length === 0 && (
-              <TableCell colSpan={2} style={{ textAlign: 'center' }}>
-                <Typography variant="h6">
-                  No data available.
-                </Typography>
-              </TableCell>
+              <TableRow>
+                <TableCell colSpan={2} style={{ textAlign: 'center' }}>
+                  <Typography variant="h6">
+                    No data available.
+                  </Typography>
+                </TableCell>
+              </TableRow>
             )
           }
           {

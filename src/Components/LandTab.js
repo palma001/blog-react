@@ -2,13 +2,13 @@ import * as React from 'react';
 import TabContext from '@mui/lab/TabContext';
 // import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel';
-import { Paper, Tabs, Typography, Box, Tab } from '@mui/material';
+import { Paper, Tabs, Typography, Box, Tab, Tooltip } from '@mui/material';
 
 
 export default function LandTab ({ tabs, handleChange, value }) {
 
-  const handleChangeTab = (event, newValue) => {
-    handleChange(newValue)
+  const handleChangeTab = (newValue, tabData) => {
+    handleChange(newValue, tabData)
   }
 
   return (
@@ -29,18 +29,21 @@ export default function LandTab ({ tabs, handleChange, value }) {
                       variant="scrollable"
                       scrollButtons="auto"
                       aria-label="scrollable auto tabs example"
-                      onChange={handleChangeTab}
                       value={value}
+                      indicatorColor="primary"
                     >
                       {
-                        tabs.map(tab => (
-                          <Tab
-                            wrapped
-                            label={tab.label}
-                            value={tab.value}
-                            key={tab.value}
-                            disabled={tab.missing}
-                          />
+                        tabs.map((tab, index) => (
+                          <Tooltip key={tab.value} title={tab.description} placement="top">
+                            <Tab
+                              wrapped
+                              key={tab.value}
+                              label={tab.label}
+                              value={tab.value}
+                              disabled={tab.missing}
+                              onClick={() => handleChangeTab(tab.value, tab)}
+                            />
+                          </Tooltip>
                         ))
                       }
                     </Tabs>

@@ -11,11 +11,7 @@ import Select from '@mui/material/Select';
 import {
   getData,
   schemaRecoder,
-  schemaParcel,
-  schemaTaxAssessor,
-  schemaOwnerUnmask,
-  schemaGeography,
-  usa as schemaUsa
+  schemaParcel
 } from '../../services';
 import LandTab from '../../Components/LandTab';
 import tabsData from './tabsData';
@@ -124,7 +120,7 @@ export default function BasicGrid() {
     setPrincipal()
   }, [page])
 
-  const handleChange = async (newValue) => {
+  const handleChange = async (newValue, dataTab) => {
     setSubmenu(newValue)
     switch (newValue) {
       case 'recorder':
@@ -143,167 +139,12 @@ export default function BasicGrid() {
       case 'recorderMortgage':
         getCherreData(schemaRecoder.recorderMortgage(principalData?.recorder_id, 1000), 'recorder_mortgage')
         break;
-      case 'taxAssessor':
-        getCherreData(schemaTaxAssessor.taxAssessor(parcel.tax_assessor_id, 1000), 'tax_assessor')
-        break;
-      case 'taxAssessorBlock':
-        getCherreData(
-          schemaTaxAssessor.taxAssessorBlock(parcel.tax_assessor_id, 1000),
-          'tax_assessor_block'
-        )
-        break;
-      case 'taxAssessorLot':
-        getCherreData(
-          schemaTaxAssessor.taxAssessorLot(parcel.tax_assessor_id, 1000),
-          'tax_assessor_lot'
-        )
-        break;
-      case 'taxAssessorOwner':
-        getCherreData(
-          schemaTaxAssessor.taxAssessorOwner(parcel.tax_assessor_id, 1000),
-          'tax_assessor_owner'
-        )
-        break;
-      case 'ownerUnmaskUsa':
-        getCherreData(
-          schemaOwnerUnmask.usaMsaBoundary(parcel.tax_assessor_id, 1000),
-          'usa_msa_boundary'
-        )
-        break;
-      case 'ownerUnmaskContractInformation':
-        getCherreData(
-          schemaOwnerUnmask.ownerUnmaskInfo(parcel.tax_assessor_id, 1000),
-          'usa_owner_unmask_contact_info'
-        )
-        break;
-      case 'ownerUnmaskEmployee':
-        getCherreData(
-          schemaOwnerUnmask.usaOwnerUnmaskEmployee(parcel.tax_assessor_id, 1000),
-          'usa_owner_unmask_employee'
-        )
-        break;
-      case 'ownerUnmaskCorporation':
-        getCherreData(
-          schemaOwnerUnmask.ownerUnmaskCorporation(parcel.tax_assessor_id, 1000),
-          'usa_owner_unmask_corporation'
-        )
-        break;
-      case 'ownerUnmaskCorporateEmployee':
-        getCherreData(
-          schemaOwnerUnmask.ownerUnmaskCorporateEmployee(parcel.tax_assessor_id, 1000),
-          'usa_owner_unmask_corp_employee'
-        )
-        break;
-      case 'usaBuilding':
-        getCherreData(
-          schemaUsa.usaBuilding(parcel.assessor_parcel_number, 1000),
-          'usa_building'
-        )
-        break;
-      case 'usaLot':
-        getCherreData(
-          schemaUsa.usaLot(parcel.assessor_parcel_number, 1000),
-          'usa_lot'
-        )
-        break;
-      case 'usaUnit':
-        getCherreData(
-          schemaUsa.usaUnit(parcel.assessor_parcel_number, 1000),
-          'usa_unit'
-        )
-        break;
-      case 'usaAvm':
-        getCherreData(
-          schemaUsa.usaAvm(parcel.tax_assessor_id, 1000),
-          'usa_avm'
-        )
-        break;
-      case 'blsEmployment':
-        getCherreData(
-          schemaUsa.blsEmployment(parcel.tax_assessor_id, 1000),
-          'usa_bls_employment'
-        )
-        break;
-      case 'censusPermitSurveyPre':
-        getCherreData(
-          schemaUsa.censusPermitSurveyPre(parcel.tax_assessor_id, 100),
-          'census_permit_survey_pre'
-        )
-        break;
-      case 'censusPermitSurveyPost':
-        getCherreData(
-          schemaUsa.censusPermitSurveyPost(parcel.tax_assessor_id, 100),
-          'census_permit_survey_post'
-        )
-        break;
-      case 'usaSchool':
-        getCherreData(
-          schemaUsa.usaSchool(parcel.tax_assessor_id, 100),
-          'usa_school'
-        )
-        break;
-      case 'usaTaxAssessorHistory':
-        getCherreData(
-          schemaUsa.usaTaxAssessorHistory(parcel.tax_assessor_id, 100),
-          'usa_tax_assessor_history'
-        )
-        break;
-      case 'usaDemographics':
-        getCherreData(
-          schemaUsa.usaDemographics(parcel.tax_assessor_id, 100),
-          'usa_demographics_v2'
-        )
-        break;
-      case 'censusTractBoundaryUsa':
-        getCherreData(
-          schemaGeography.censusTractBoundaryUsa(parcel.tax_assessor_id, 100),
-          'usa_census_tract_boundary'
-        )
-        break;
-      case 'countyBoundaryUsa':
-        getCherreData(
-          schemaGeography.countyBoundaryUsa(parcel.tax_assessor_id, 100),
-          'usa_county_boundary'
-        )
-        break;
-      case 'stateBoundaryUsa':
-        getCherreData(
-          schemaGeography.stateBoundaryUsa(parcel.tax_assessor_id, 100),
-          'usa_state_boundary'
-        )
-        break;
-      case 'msaBoundaryUsa':
-        getCherreData(
-          schemaGeography.msaBoundaryUsa(parcel.tax_assessor_id, 100),
-          'usa_msa_boundary'
-        )
-        break;
-      case 'zipBoundaryUsa':
-        getCherreData(
-          schemaGeography.zipBoundaryUsa(parcel.tax_assessor_id, 100),
-          'usa_zip_code_boundary'
-        )
-        break;
-      case 'schoolBoundaryUsa':
-        getCherreData(
-          schemaGeography.schoolBoundaryUsa(parcel.tax_assessor_id, 100),
-          'usa_school_boundary'
-        )
-        break;
-      case 'neighborhoodBoundaryUsa':
-        getCherreData(
-          schemaGeography.neighborhoodBoundaryUsa(parcel.tax_assessor_id, 100),
-          'usa_neighborhood_boundary'
-        )
-        break;
-      case 'parcelBoundary':
-        getCherreData(
-          schemaGeography.parcelBoundary(parcel.tax_assessor_id, 100),
-          'parcel_boundary'
-        )
-        break;
       default:
-        setTableData([])
+        if (dataTab?.nameSchema) {
+          getCherreData(dataTab.schema(parcel.tax_assessor_id), dataTab?.nameSchema)
+        } else {
+          setTableData([])
+        }
         setLoadingData(false);
         break;
     }
@@ -323,7 +164,7 @@ export default function BasicGrid() {
     if (parcel) {
       const tabs = tabsData(headers, principalMenu?.key, loadingData, tableData)
       setTabsDataValue(tabs)
-      handleChange(tabs[0]?.value)
+      handleChange(tabs[0]?.value, tabs[0])
       setPrincipal()
     }
   }, [principalMenu]);
@@ -418,7 +259,6 @@ export default function BasicGrid() {
         </Select>
       </FormControl>
       <Container
-        fluid
         maxWidth="xl"
         style={{
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
