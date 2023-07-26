@@ -30,20 +30,30 @@ export default function LandTab ({ tabs, handleChange, value }) {
                       scrollButtons="auto"
                       aria-label="scrollable auto tabs example"
                       value={value}
-                      indicatorColor="primary"
                     >
                       {
                         tabs.map((tab, index) => (
-                          <Tooltip key={tab.value} title={tab.description} placement="top">
-                            <Tab
-                              wrapped
-                              key={tab.value}
-                              label={tab.label}
-                              value={tab.value}
-                              disabled={tab.missing}
-                              onClick={() => handleChangeTab(tab.value, tab)}
-                            />
-                          </Tooltip>
+                          <Tab
+                            wrapped
+                            key={tab.value}
+                            label={
+                              <>
+                                <Tooltip
+                                  title={tab.description}
+                                  arrow
+                                  color="success"
+                                  placement="top"
+                                  size="lg"
+                                  variant="solid"
+                                >
+                                  { tab.label }
+                                </Tooltip>
+                              </>
+                            }
+                            value={tab.value}
+                            disabled={tab.missing}
+                            onClick={() => handleChangeTab(tab.value, tab)}
+                          />
                         ))
                       }
                     </Tabs>

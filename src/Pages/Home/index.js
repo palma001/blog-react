@@ -21,7 +21,7 @@ import { Pagination, Stack, Typography, Container } from '@mui/material';
 export default function BasicGrid() {
   const [parcel, setParcel] = useState('');
   const [parcels, setParcels] = useState([]);
-  const [submenu, setSubmenu] = useState('recorder');
+  const [submenu, setSubmenu] = useState(0);
   const [principalMenu, setPrincipalMenu] = useState(null);
   const [loadingData, setLoadingData] = useState(false);
   const [tableData, setTableData] = useState([]);
