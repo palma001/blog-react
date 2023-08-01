@@ -21,7 +21,7 @@ import { Pagination, Stack, Typography, Container } from '@mui/material';
 export default function BasicGrid() {
   const [parcel, setParcel] = useState('');
   const [parcels, setParcels] = useState([]);
-  const [submenu, setSubmenu] = useState(0);
+  const [submenu, setSubmenu] = useState('recorder');
   const [principalMenu, setPrincipalMenu] = useState(null);
   const [loadingData, setLoadingData] = useState(false);
   const [tableData, setTableData] = useState([]);
@@ -94,12 +94,14 @@ export default function BasicGrid() {
    */
   const getCherreData = async (query, queryName) => {
     try {
-      setLoadingData(true);
       setTableData([])
+      setLoadingData(true);
+      console.log('waiting...')
       const { data } = await getData(query)
       setLoadingData(false);
       setTableDataRequest(data[queryName]);
       setTableData(convertData(data[queryName][0]))
+      console.log('ready')
     } catch (error) {
       console.log(error);
       setTableData([])
@@ -122,6 +124,7 @@ export default function BasicGrid() {
 
   const handleChange = async (newValue, dataTab) => {
     setSubmenu(newValue)
+    setPage(1)
     switch (newValue) {
       case 'recorder':
         setPrincipalData(tableDataRequest[page - 1])
@@ -216,7 +219,7 @@ export default function BasicGrid() {
         background: '#2E7D32',
         boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.20)',
       }}
-      disabled={principalMenu?.key === button.key}
+      disabled={principalMenu?.key === button.key || loadingData}
       onClick={() => handlerPrincipalMenu(button)}
     >
       { button.label }
@@ -293,7 +296,12 @@ export default function BasicGrid() {
           alignItems="center"
         >
           <Grid xs={12} sm={12} md={12} lg={12} xl={12}>
-            <LandTab value={submenu} tabs={tabsDataValue} handleChange={handleChange}/>
+            <LandTab
+              value={submenu}
+              tabs={tabsDataValue}
+              handleChange={handleChange}
+              loadingData={loadingData}
+            />
           </Grid>
          <Grid xs="auto">
             <LandPagination/>

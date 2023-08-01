@@ -1,9 +1,15 @@
 import LandTable from "../../Components/LandTable"
 import { schemaGeography, schemaOwnerUnmask, schemaRecoder, schemaTaxAssessor, usa as schemaUsa } from "../../services"
 export default function tabsData (headers, tabs, loadingData, tableData) {
+  /**
+   * Component to render table
+   * @param {Object} props props to render table 
+   * @returns {JSX.Element} table component
+   */
   const TableComponent = ({ data }) => {
     return <LandTable data={data} headers={headers} loadingData={loadingData}/>
   }
+
   return [
     {
       label: 'Recorder',

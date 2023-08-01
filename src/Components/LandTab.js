@@ -2,10 +2,11 @@ import * as React from 'react';
 import TabContext from '@mui/lab/TabContext';
 // import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel';
-import { Paper, Tabs, Typography, Box, Tab, Tooltip } from '@mui/material';
+import { Paper, Tabs, Typography, Box, Tab } from '@mui/material';
+import Tooltip from '@mui/joy/Tooltip';
 
 
-export default function LandTab ({ tabs, handleChange, value }) {
+export default function LandTab ({ tabs, handleChange, value, loadingData }) {
 
   const handleChangeTab = (newValue, tabData) => {
     handleChange(newValue, tabData)
@@ -32,26 +33,23 @@ export default function LandTab ({ tabs, handleChange, value }) {
                       value={value}
                     >
                       {
-                        tabs.map((tab, index) => (
+                        tabs.map(tab => (
                           <Tab
                             wrapped
-                            key={tab.value}
-                            label={
-                              <>
-                                <Tooltip
-                                  title={tab.description}
-                                  arrow
-                                  color="success"
-                                  placement="top"
-                                  size="lg"
-                                  variant="solid"
-                                >
-                                  { tab.label }
-                                </Tooltip>
-                              </>
-                            }
                             value={tab.value}
-                            disabled={tab.missing}
+                            key={tab.value}
+                            disabled={tab.missing || loadingData}
+                            label={
+                              <Tooltip
+                                title={tab.description}
+                                arrow
+                                size="lg"
+                              >
+                                <span>
+                                  { tab.label }
+                                </span>
+                              </Tooltip>
+                            }
                             onClick={() => handleChangeTab(tab.value, tab)}
                           />
                         ))
@@ -72,7 +70,7 @@ export default function LandTab ({ tabs, handleChange, value }) {
             </Box>
           </TabContext>
         )
-      }
+      }  
     </>
   )
 }
